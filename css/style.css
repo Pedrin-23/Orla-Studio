@@ -701,7 +701,7 @@ li {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
   margin-top: 46px;
 }
@@ -762,6 +762,25 @@ li {
 
 .project-preview.business {
   background: linear-gradient(135deg, #0d5663, #f4eadc);
+}
+
+.project-preview.project-photo {
+  padding: 0;
+  height: 210px;
+  background: #102b33;
+}
+
+.project-preview.project-photo::before,
+.project-preview.project-photo::after {
+  display: none;
+}
+
+.project-preview.project-photo img {
+  display: block;
+  width: 100%;
+  min-height: 210px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .preview-badge,
