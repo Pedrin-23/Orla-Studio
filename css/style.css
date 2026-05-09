@@ -859,10 +859,10 @@ li {
 .pricing-card {
   position: relative;
   display: flex;
-  min-height: 520px;
+  min-height: 640px;
   flex-direction: column;
-  gap: 28px;
-  padding: 34px;
+  gap: 24px;
+  padding: 32px;
   border: 1px solid rgba(13, 86, 99, 0.12);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.86);
@@ -888,6 +888,11 @@ li {
 .pricing-card.featured li,
 .pricing-card.featured .price {
   color: var(--color-white);
+}
+
+.pricing-card.featured .benefit-highlight {
+  color: var(--color-teal-dark);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .plan-tag {
@@ -927,6 +932,104 @@ li {
   height: 10px;
   border-radius: 50%;
   background: var(--color-aqua);
+}
+
+.pricing-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.benefit-highlight {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 12px;
+  color: var(--color-teal-dark);
+  font-weight: 900;
+  border-radius: var(--radius-md);
+  background: var(--color-aqua-soft);
+}
+
+.benefit-highlight::before {
+  display: none;
+}
+
+.maintenance-section {
+  margin-top: 64px;
+  padding-top: 54px;
+  border-top: 1px solid rgba(13, 86, 99, 0.12);
+}
+
+.section-heading.compact {
+  max-width: 780px;
+}
+
+.section-heading.compact h3 {
+  margin: 0;
+  color: var(--color-teal-dark);
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  line-height: 1.1;
+}
+
+.maintenance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.maintenance-card {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 26px;
+  border: 1px solid rgba(13, 86, 99, 0.1);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 10px 24px rgba(16, 43, 51, 0.06);
+}
+
+.maintenance-card h4 {
+  margin: 0 0 8px;
+  color: var(--color-teal-dark);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.maintenance-price {
+  display: block;
+  color: var(--color-teal);
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.maintenance-card ul {
+  display: grid;
+  gap: 10px;
+  margin-bottom: auto;
+}
+
+.maintenance-card li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--color-muted);
+  font-size: 0.96rem;
+}
+
+.maintenance-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-aqua);
+}
+
+.maintenance-card .btn {
+  width: 100%;
 }
 
 .pricing-note {
@@ -1197,7 +1300,8 @@ li {
 
   .services-grid,
   .advantages-grid,
-  .pricing-grid {
+  .pricing-grid,
+  .maintenance-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1255,6 +1359,7 @@ li {
   .advantages-grid,
   .portfolio-grid,
   .pricing-grid,
+  .maintenance-grid,
   .process-list,
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1289,11 +1394,16 @@ li {
 
   .service-card,
   .pricing-card,
+  .maintenance-card,
   .contact-form {
     padding: 24px;
   }
 
   .pricing-card {
+    min-height: auto;
+  }
+
+  .maintenance-card {
     min-height: auto;
   }
 

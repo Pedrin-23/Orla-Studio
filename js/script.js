@@ -7,9 +7,7 @@ const sections = document.querySelectorAll("main section[id]");
 const form = document.querySelector("#contact-form");
 const feedback = document.querySelector(".form-feedback");
 
-const whatsappNumber = "5522999999999";
-
-// Controla o menu mobile e mantém os atributos de acessibilidade sincronizados.
+// Controls the mobile menu and keeps accessibility attributes in sync.
 function setMenuState(isOpen) {
   menuToggle.classList.toggle("is-active", isOpen);
   navPanel.classList.toggle("is-open", isOpen);
@@ -33,7 +31,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Aplica sombra no header após a primeira rolagem.
+// Adds header shadow after the first scroll.
 function updateHeaderState() {
   header.classList.toggle("scrolled", window.scrollY > 12);
 }
@@ -41,7 +39,7 @@ function updateHeaderState() {
 updateHeaderState();
 window.addEventListener("scroll", updateHeaderState, { passive: true });
 
-// Revela conteúdos gradualmente quando entram na viewport.
+// Reveals content as it enters the viewport.
 const revealObserver = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach((entry) => {
@@ -56,7 +54,7 @@ const revealObserver = new IntersectionObserver(
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
-// Marca o link ativo do menu conforme a seção visível.
+// Marks the active menu link based on the visible section.
 const sectionObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -75,25 +73,9 @@ const sectionObserver = new IntersectionObserver(
 
 sections.forEach((section) => sectionObserver.observe(section));
 
-// O formulário cria uma mensagem pronta e abre o WhatsApp para contato direto.
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+// The form is sent by FormSubmit to the email configured in index.html.
+form.addEventListener("submit", () => {
+  if (!form.checkValidity()) return;
 
-  const formData = new FormData(form);
-  const name = formData.get("name").trim();
-  const email = formData.get("email").trim();
-  const project = formData.get("project");
-  const message = formData.get("message").trim();
-
-  const whatsappMessage = [
-    "Olá, Orla Studio!",
-    `Meu nome é ${name}.`,
-    `Email: ${email}.`,
-    `Tipo de projeto: ${project}.`,
-    `Mensagem: ${message}`
-  ].join("\n");
-
-  feedback.textContent = "Mensagem pronta. Abrindo WhatsApp para envio.";
-  window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank", "noopener");
-  form.reset();
+  feedback.textContent = "Enviando mensagem por email...";
 });
